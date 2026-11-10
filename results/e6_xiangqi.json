@@ -1,0 +1,387 @@
+{
+ "perft": [
+  {
+   "depth": 1,
+   "nodes": 44,
+   "reference": 44,
+   "ok": true,
+   "time": 0.00014968400000725524
+  },
+  {
+   "depth": 2,
+   "nodes": 1920,
+   "reference": 1920,
+   "ok": true,
+   "time": 0.005424302999927022
+  },
+  {
+   "depth": 3,
+   "nodes": 79666,
+   "reference": 79666,
+   "ok": true,
+   "time": 0.21858258999986901
+  },
+  {
+   "depth": 4,
+   "nodes": 3290240,
+   "reference": 3290240,
+   "ok": true,
+   "time": 10.071013205999861
+  }
+ ],
+ "nodes": [
+  {
+   "pos": "Khai cuộc",
+   "fen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",
+   "depth": 1,
+   "minimax": {
+    "nodes": 45,
+    "time": 0.00570006399993872,
+    "value": 276
+   },
+   "ab": {
+    "nodes": 45,
+    "time": 0.005554761999974289,
+    "value": 276
+   },
+   "ab_mvvlva": {
+    "nodes": 45,
+    "time": 0.005532307999828845,
+    "value": 276
+   },
+   "same_value": true
+  },
+  {
+   "pos": "Khai cuộc",
+   "fen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",
+   "depth": 2,
+   "minimax": {
+    "nodes": 1965,
+    "time": 0.24233866800000214,
+    "value": -11
+   },
+   "ab": {
+    "nodes": 523,
+    "time": 0.06307976500011137,
+    "value": -11
+   },
+   "ab_mvvlva": {
+    "nodes": 130,
+    "time": 0.01533414300001823,
+    "value": -11
+   },
+   "same_value": true
+  },
+  {
+   "pos": "Khai cuộc",
+   "fen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",
+   "depth": 3,
+   "minimax": {
+    "nodes": 81631,
+    "time": 9.75232994099997,
+    "value": 265
+   },
+   "ab": {
+    "nodes": 8295,
+    "time": 1.0035163960001228,
+    "value": 265
+   },
+   "ab_mvvlva": {
+    "nodes": 1855,
+    "time": 0.20044546300005095,
+    "value": 265
+   },
+   "same_value": true
+  },
+  {
+   "pos": "Trung cuộc A (sau 16 nửa nước)",
+   "fen": "1rba1ab1r/5k3/4R1n2/4p1pCp/p1p6/9/P1P1P1P1P/N8/9/2BAKABR1 w",
+   "depth": 1,
+   "minimax": {
+    "nodes": 38,
+    "time": 0.003500230000099691,
+    "value": 575
+   },
+   "ab": {
+    "nodes": 38,
+    "time": 0.003497589000062362,
+    "value": 575
+   },
+   "ab_mvvlva": {
+    "nodes": 38,
+    "time": 0.003473869000117702,
+    "value": 575
+   },
+   "same_value": true
+  },
+  {
+   "pos": "Trung cuộc A (sau 16 nửa nước)",
+   "fen": "1rba1ab1r/5k3/4R1n2/4p1pCp/p1p6/9/P1P1P1P1P/N8/9/2BAKABR1 w",
+   "depth": 2,
+   "minimax": {
+    "nodes": 950,
+    "time": 0.10368514200013124,
+    "value": 523
+   },
+   "ab": {
+    "nodes": 212,
+    "time": 0.02281895999999506,
+    "value": 523
+   },
+   "ab_mvvlva": {
+    "nodes": 98,
+    "time": 0.00988306400017791,
+    "value": 523
+   },
+   "same_value": true
+  },
+  {
+   "pos": "Trung cuộc A (sau 16 nửa nước)",
+   "fen": "1rba1ab1r/5k3/4R1n2/4p1pCp/p1p6/9/P1P1P1P1P/N8/9/2BAKABR1 w",
+   "depth": 3,
+   "minimax": {
+    "nodes": 35416,
+    "time": 3.5248563820000527,
+    "value": 643
+   },
+   "ab": {
+    "nodes": 4509,
+    "time": 0.45373754699994606,
+    "value": 643
+   },
+   "ab_mvvlva": {
+    "nodes": 1347,
+    "time": 0.13774840399992172,
+    "value": 643
+   },
+   "same_value": true
+  },
+  {
+   "pos": "Trung cuộc B (sau 30 nửa nước)",
+   "fen": "3akabr1/r8/4b4/p3n1p1p/9/2P1p4/4C1P1P/B3B4/R8/1N1AKA1R1 w",
+   "depth": 1,
+   "minimax": {
+    "nodes": 39,
+    "time": 0.004037198999867542,
+    "value": 781
+   },
+   "ab": {
+    "nodes": 39,
+    "time": 0.004043112000090332,
+    "value": 781
+   },
+   "ab_mvvlva": {
+    "nodes": 39,
+    "time": 0.004025428999966607,
+    "value": 781
+   },
+   "same_value": true
+  },
+  {
+   "pos": "Trung cuộc B (sau 30 nửa nước)",
+   "fen": "3akabr1/r8/4b4/p3n1p1p/9/2P1p4/4C1P1P/B3B4/R8/1N1AKA1R1 w",
+   "depth": 2,
+   "minimax": {
+    "nodes": 1438,
+    "time": 0.16055801199991038,
+    "value": 476
+   },
+   "ab": {
+    "nodes": 148,
+    "time": 0.0161847360000138,
+    "value": 476
+   },
+   "ab_mvvlva": {
+    "nodes": 107,
+    "time": 0.010126305000085267,
+    "value": 476
+   },
+   "same_value": true
+  },
+  {
+   "pos": "Trung cuộc B (sau 30 nửa nước)",
+   "fen": "3akabr1/r8/4b4/p3n1p1p/9/2P1p4/4C1P1P/B3B4/R8/1N1AKA1R1 w",
+   "depth": 3,
+   "minimax": {
+    "nodes": 53697,
+    "time": 5.460033926999813,
+    "value": 1079
+   },
+   "ab": {
+    "nodes": 2417,
+    "time": 0.22774185699995542,
+    "value": 1079
+   },
+   "ab_mvvlva": {
+    "nodes": 1193,
+    "time": 0.12759174000007079,
+    "value": 1079
+   },
+   "same_value": true
+  }
+ ],
+ "matches": {
+  "AB1 vs Random": {
+   "games": 20,
+   "win": 16,
+   "draw": 4,
+   "loss": 0,
+   "win_rate": 0.8,
+   "nonloss_rate": 1.0,
+   "score": 0.9,
+   "win_first": 7,
+   "draw_first": 3,
+   "loss_first": 0,
+   "win_second": 9,
+   "draw_second": 1,
+   "loss_second": 0,
+   "avg_plies": 64.35,
+   "ms_per_move_a": 2.6725921157361863,
+   "ms_per_move_b": 0.0011986588423481212
+  },
+  "AB2 vs Random": {
+   "games": 20,
+   "win": 17,
+   "draw": 3,
+   "loss": 0,
+   "win_rate": 0.85,
+   "nonloss_rate": 1.0,
+   "score": 0.925,
+   "win_first": 8,
+   "draw_first": 2,
+   "loss_first": 0,
+   "win_second": 9,
+   "draw_second": 1,
+   "loss_second": 0,
+   "avg_plies": 52.8,
+   "ms_per_move_a": 23.406983071289623,
+   "ms_per_move_b": 0.0021886845105051653
+  },
+  "AB2 vs AB1": {
+   "games": 20,
+   "win": 20,
+   "draw": 0,
+   "loss": 0,
+   "win_rate": 1.0,
+   "nonloss_rate": 1.0,
+   "score": 1.0,
+   "win_first": 10,
+   "draw_first": 0,
+   "loss_first": 0,
+   "win_second": 10,
+   "draw_second": 0,
+   "loss_second": 0,
+   "avg_plies": 31.5,
+   "ms_per_move_a": 19.897813906248984,
+   "ms_per_move_b": 2.9485413225940293
+  },
+  "AB3 vs AB2": {
+   "games": 20,
+   "win": 10,
+   "draw": 10,
+   "loss": 0,
+   "win_rate": 0.5,
+   "nonloss_rate": 1.0,
+   "score": 0.75,
+   "win_first": 10,
+   "draw_first": 0,
+   "loss_first": 0,
+   "win_second": 0,
+   "draw_second": 10,
+   "loss_second": 0,
+   "avg_plies": 55.5,
+   "ms_per_move_a": 196.69128186964792,
+   "ms_per_move_b": 15.840702125456533
+  },
+  "MCTS-random vs Random": {
+   "games": 20,
+   "win": 18,
+   "draw": 2,
+   "loss": 0,
+   "win_rate": 0.9,
+   "nonloss_rate": 1.0,
+   "score": 0.95,
+   "win_first": 8,
+   "draw_first": 2,
+   "loss_first": 0,
+   "win_second": 10,
+   "draw_second": 0,
+   "loss_second": 0,
+   "avg_plies": 104.5,
+   "ms_per_move_a": 399.61401652622396,
+   "ms_per_move_b": 0.002734312199569771
+  },
+  "MCTS-eval vs Random": {
+   "games": 20,
+   "win": 20,
+   "draw": 0,
+   "loss": 0,
+   "win_rate": 1.0,
+   "nonloss_rate": 1.0,
+   "score": 1.0,
+   "win_first": 10,
+   "draw_first": 0,
+   "loss_first": 0,
+   "win_second": 10,
+   "draw_second": 0,
+   "loss_second": 0,
+   "avg_plies": 83.3,
+   "ms_per_move_a": 111.7299076980915,
+   "ms_per_move_b": 0.0020575301935265165
+  },
+  "MCTS-eval vs MCTS-random": {
+   "games": 20,
+   "win": 17,
+   "draw": 0,
+   "loss": 3,
+   "win_rate": 0.85,
+   "nonloss_rate": 0.85,
+   "score": 0.85,
+   "win_first": 9,
+   "draw_first": 0,
+   "loss_first": 1,
+   "win_second": 8,
+   "draw_second": 0,
+   "loss_second": 2,
+   "avg_plies": 73.95,
+   "ms_per_move_a": 113.39615923418859,
+   "ms_per_move_b": 357.6199925407606
+  },
+  "MCTS-eval vs AB1": {
+   "games": 20,
+   "win": 6,
+   "draw": 8,
+   "loss": 6,
+   "win_rate": 0.3,
+   "nonloss_rate": 0.7,
+   "score": 0.5,
+   "win_first": 3,
+   "draw_first": 5,
+   "loss_first": 2,
+   "win_second": 3,
+   "draw_second": 3,
+   "loss_second": 4,
+   "avg_plies": 103.5,
+   "ms_per_move_a": 82.84334588985966,
+   "ms_per_move_b": 1.980302279231481
+  },
+  "MCTS-eval vs AB2": {
+   "games": 20,
+   "win": 0,
+   "draw": 4,
+   "loss": 16,
+   "win_rate": 0.0,
+   "nonloss_rate": 0.2,
+   "score": 0.1,
+   "win_first": 0,
+   "draw_first": 3,
+   "loss_first": 7,
+   "win_second": 0,
+   "draw_second": 1,
+   "loss_second": 9,
+   "avg_plies": 56.8,
+   "ms_per_move_a": 106.27398851865057,
+   "ms_per_move_b": 21.407765696343024
+  }
+ }
+}

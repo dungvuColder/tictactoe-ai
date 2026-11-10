@@ -1,0 +1,24 @@
+  [E6b] 3/60 ván, 24s
+  [E6b] 6/60 ván, 29s
+  [E6b] 9/60 ván, 48s
+  [E6b] 12/60 ván, 75s
+  [E6b] 15/60 ván, 85s
+  [E6b] 18/60 ván, 104s
+  [E6b] 21/60 ván, 125s
+  [E6b] 24/60 ván, 137s
+  [E6b] 27/60 ván, 143s
+  [E6b] 30/60 ván, 147s
+  [E6b] 33/60 ván, 157s
+  [E6b] 36/60 ván, 175s
+  [E6b] 39/60 ván, 203s
+  [E6b] 42/60 ván, 209s
+  [E6b] 45/60 ván, 215s
+  [E6b] 48/60 ván, 218s
+  [E6b] 51/60 ván, 232s
+  [E6b] 54/60 ván, 250s
+  [E6b] 57/60 ván, 254s
+  [E6b] 60/60 ván, 268s
+Đã lưu /home/claude/tictactoe_ai/results/e6b_ab_openings.json
+AB2 vs AB1 (khai cuộc ngẫu nhiên) 18 2 0 9 1 0 43
+AB3 vs AB2 (khai cuộc ngẫu nhiên) 15 5 0 6 4 0 60
+MCTS-eval vs AB1 (khai cuộc ngẫu nhiên) 9 4 7 5 2 3 87

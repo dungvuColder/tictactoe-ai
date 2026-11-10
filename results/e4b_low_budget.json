@@ -1,0 +1,100 @@
+{
+ "positions": [
+  {
+   "it": 30,
+   "positions": 150,
+   "ratio_pick_lowN": 0.8533333333333334,
+   "same": 0.9066666666666666,
+   "robust_best": 0.04,
+   "ratio_best": 0.04666666666666667
+  },
+  {
+   "it": 60,
+   "positions": 150,
+   "ratio_pick_lowN": 0.013333333333333334,
+   "same": 0.9733333333333334,
+   "robust_best": 0.10666666666666667,
+   "ratio_best": 0.11333333333333333
+  },
+  {
+   "it": 100,
+   "positions": 150,
+   "ratio_pick_lowN": 0.0,
+   "same": 0.9533333333333334,
+   "robust_best": 0.12,
+   "ratio_best": 0.10666666666666667
+  },
+  {
+   "it": 300,
+   "positions": 150,
+   "ratio_pick_lowN": 0.0,
+   "same": 0.94,
+   "robust_best": 0.19333333333333333,
+   "ratio_best": 0.17333333333333334
+  },
+  {
+   "it": 1000,
+   "positions": 150,
+   "ratio_pick_lowN": 0.0,
+   "same": 0.96,
+   "robust_best": 0.3,
+   "ratio_best": 0.30666666666666664
+  }
+ ],
+ "matches": {
+  "robust_vs_ratio|30": {
+   "games": 100,
+   "win": 47,
+   "draw": 0,
+   "loss": 53,
+   "win_rate": 0.47,
+   "nonloss_rate": 0.47,
+   "score": 0.47,
+   "win_first": 24,
+   "draw_first": 0,
+   "loss_first": 26,
+   "win_second": 23,
+   "draw_second": 0,
+   "loss_second": 27,
+   "avg_plies": 37.99,
+   "ms_per_move_a": 2.3392625031600702,
+   "ms_per_move_b": 2.3000982798570524
+  },
+  "robust_vs_ratio|60": {
+   "games": 100,
+   "win": 48,
+   "draw": 0,
+   "loss": 52,
+   "win_rate": 0.48,
+   "nonloss_rate": 0.48,
+   "score": 0.48,
+   "win_first": 18,
+   "draw_first": 0,
+   "loss_first": 32,
+   "win_second": 30,
+   "draw_second": 0,
+   "loss_second": 20,
+   "avg_plies": 27.92,
+   "ms_per_move_a": 4.836785660942322,
+   "ms_per_move_b": 4.883659941311523
+  },
+  "robust_vs_ratio|100": {
+   "games": 100,
+   "win": 51,
+   "draw": 0,
+   "loss": 49,
+   "win_rate": 0.51,
+   "nonloss_rate": 0.51,
+   "score": 0.51,
+   "win_first": 26,
+   "draw_first": 0,
+   "loss_first": 24,
+   "win_second": 25,
+   "draw_second": 0,
+   "loss_second": 25,
+   "avg_plies": 22.55,
+   "ms_per_move_a": 8.804731184396742,
+   "ms_per_move_b": 8.781747649513377
+  }
+ }
+}

@@ -1,0 +1,477 @@
+{
+ "table_empty_1000": [
+  {
+   "move": "(1,1)",
+   "W": 173.0,
+   "N": 227,
+   "W/N": 0.762114537444934,
+   "UCT": 1.006335860001363,
+   "minimax": 0
+  },
+  {
+   "move": "(0,2)",
+   "W": 90.0,
+   "N": 132,
+   "W/N": 0.6818181818181818,
+   "UCT": 1.0020832276739657,
+   "minimax": 0
+  },
+  {
+   "move": "(0,0)",
+   "W": 89.5,
+   "N": 131,
+   "W/N": 0.683206106870229,
+   "UCT": 1.0046912144616873,
+   "minimax": 0
+  },
+  {
+   "move": "(2,2)",
+   "W": 76.5,
+   "N": 116,
+   "W/N": 0.6594827586206896,
+   "UCT": 1.0011218143052065,
+   "minimax": 0
+  },
+  {
+   "move": "(2,0)",
+   "W": 60.5,
+   "N": 96,
+   "W/N": 0.6302083333333334,
+   "UCT": 1.0057523879339691,
+   "minimax": 0
+  },
+  {
+   "move": "(2,1)",
+   "W": 51.0,
+   "N": 85,
+   "W/N": 0.6,
+   "UCT": 0.9991048859164864,
+   "minimax": 0
+  },
+  {
+   "move": "(1,0)",
+   "W": 45.0,
+   "N": 77,
+   "W/N": 0.5844155844155844,
+   "UCT": 1.0037409601534797,
+   "minimax": 0
+  },
+  {
+   "move": "(0,1)",
+   "W": 40.0,
+   "N": 71,
+   "W/N": 0.5633802816901409,
+   "UCT": 1.0000643352472363,
+   "minimax": 0
+  },
+  {
+   "move": "(1,2)",
+   "W": 35.5,
+   "N": 65,
+   "W/N": 0.5461538461538461,
+   "UCT": 1.0025477439557842,
+   "minimax": 0
+  }
+ ],
+ "table_empty_100": [
+  {
+   "move": "(0,0)",
+   "W": 13.0,
+   "N": 16,
+   "W/N": 0.8125,
+   "UCT": 1.5635881092012713,
+   "minimax": 0
+  },
+  {
+   "move": "(2,2)",
+   "W": 12.0,
+   "N": 15,
+   "W/N": 0.8,
+   "UCT": 1.5757204635922513,
+   "minimax": 0
+  },
+  {
+   "move": "(0,1)",
+   "W": 11.0,
+   "N": 14,
+   "W/N": 0.7857142857142857,
+   "UCT": 1.5886612491174315,
+   "minimax": 0
+  },
+  {
+   "move": "(1,0)",
+   "W": 7.5,
+   "N": 11,
+   "W/N": 0.6818181818181818,
+   "UCT": 1.5876645246247638,
+   "minimax": 0
+  },
+  {
+   "move": "(2,0)",
+   "W": 7.5,
+   "N": 11,
+   "W/N": 0.6818181818181818,
+   "UCT": 1.5876645246247638,
+   "minimax": 0
+  },
+  {
+   "move": "(2,1)",
+   "W": 6.0,
+   "N": 10,
+   "W/N": 0.6,
+   "UCT": 1.5500596594181157,
+   "minimax": 0
+  },
+  {
+   "move": "(1,1)",
+   "W": 5.0,
+   "N": 9,
+   "W/N": 0.5555555555555556,
+   "UCT": 1.5570063678239177,
+   "minimax": 0
+  },
+  {
+   "move": "(0,2)",
+   "W": 4.0,
+   "N": 8,
+   "W/N": 0.5,
+   "UCT": 1.5621989905696025,
+   "minimax": 0
+  },
+  {
+   "move": "(1,2)",
+   "W": 1.5,
+   "N": 6,
+   "W/N": 0.25,
+   "UCT": 1.4765217462766176,
+   "minimax": 0
+  }
+ ],
+ "pos_tricky": "    0  1  2\n 0  X  .  .\n 1  .  O  .\n 2  .  .  X",
+ "table_tricky_200": [
+  {
+   "move": "(2,0)",
+   "W": 25.0,
+   "N": 44,
+   "W/N": 0.5681818181818182,
+   "UCT": 1.0539965518189918,
+   "minimax": -1
+  },
+  {
+   "move": "(0,1)",
+   "W": 19.5,
+   "N": 37,
+   "W/N": 0.527027027027027,
+   "UCT": 1.056807757764171,
+   "minimax": 0
+  },
+  {
+   "move": "(1,2)",
+   "W": 18.0,
+   "N": 35,
+   "W/N": 0.5142857142857142,
+   "UCT": 1.0589927663115624,
+   "minimax": 0
+  },
+  {
+   "move": "(2,1)",
+   "W": 13.5,
+   "N": 29,
+   "W/N": 0.46551724137931033,
+   "UCT": 1.063926109745337,
+   "minimax": 0
+  },
+  {
+   "move": "(1,0)",
+   "W": 13.0,
+   "N": 29,
+   "W/N": 0.4482758620689655,
+   "UCT": 1.0466847304349922,
+   "minimax": 0
+  },
+  {
+   "move": "(0,2)",
+   "W": 11.0,
+   "N": 26,
+   "W/N": 0.4230769230769231,
+   "UCT": 1.0550671262152722,
+   "minimax": -1
+  }
+ ],
+ "table_tricky_1000": [
+  {
+   "move": "(1,2)",
+   "W": 121.0,
+   "N": 220,
+   "W/N": 0.55,
+   "UCT": 0.7980762377943613,
+   "minimax": 0
+  },
+  {
+   "move": "(0,1)",
+   "W": 107.0,
+   "N": 199,
+   "W/N": 0.5376884422110553,
+   "UCT": 0.7985259062519043,
+   "minimax": 0
+  },
+  {
+   "move": "(2,1)",
+   "W": 107.5,
+   "N": 198,
+   "W/N": 0.5429292929292929,
+   "UCT": 0.8044246078612021,
+   "minimax": 0
+  },
+  {
+   "move": "(1,0)",
+   "W": 103.0,
+   "N": 193,
+   "W/N": 0.533678756476684,
+   "UCT": 0.7985396579583949,
+   "minimax": 0
+  },
+  {
+   "move": "(2,0)",
+   "W": 46.0,
+   "N": 105,
+   "W/N": 0.4380952380952381,
+   "UCT": 0.797184036594532,
+   "minimax": -1
+  },
+  {
+   "move": "(0,2)",
+   "W": 33.5,
+   "N": 85,
+   "W/N": 0.3941176470588235,
+   "UCT": 0.79322253297531,
+   "minimax": -1
+  }
+ ],
+ "disagreement": [
+  {
+   "it": 25,
+   "positions": 400,
+   "disagree": 11,
+   "robust_optimal": 376,
+   "ratio_optimal": 378
+  },
+  {
+   "it": 50,
+   "positions": 400,
+   "disagree": 5,
+   "robust_optimal": 386,
+   "ratio_optimal": 385
+  },
+  {
+   "it": 100,
+   "positions": 400,
+   "disagree": 12,
+   "robust_optimal": 392,
+   "ratio_optimal": 393
+  },
+  {
+   "it": 200,
+   "positions": 400,
+   "disagree": 6,
+   "robust_optimal": 395,
+   "ratio_optimal": 395
+  },
+  {
+   "it": 500,
+   "positions": 400,
+   "disagree": 4,
+   "robust_optimal": 398,
+   "ratio_optimal": 398
+  },
+  {
+   "it": 1000,
+   "positions": 400,
+   "disagree": 9,
+   "robust_optimal": 399,
+   "ratio_optimal": 399
+  }
+ ],
+ "matches": {
+  "3x3|robust|25": {
+   "games": 100,
+   "win": 0,
+   "draw": 54,
+   "loss": 46,
+   "win_rate": 0.0,
+   "nonloss_rate": 0.54,
+   "score": 0.27,
+   "win_first": 0,
+   "draw_first": 41,
+   "loss_first": 9,
+   "win_second": 0,
+   "draw_second": 13,
+   "loss_second": 37,
+   "avg_plies": 7.79,
+   "ms_per_move_a": 0.15956827274548432,
+   "ms_per_move_b": 0.010819162438736218
+  },
+  "3x3|max_ratio|25": {
+   "games": 100,
+   "win": 0,
+   "draw": 58,
+   "loss": 42,
+   "win_rate": 0.0,
+   "nonloss_rate": 0.58,
+   "score": 0.29,
+   "win_first": 0,
+   "draw_first": 44,
+   "loss_first": 6,
+   "win_second": 0,
+   "draw_second": 14,
+   "loss_second": 36,
+   "avg_plies": 7.88,
+   "ms_per_move_a": 0.1720964398985083,
+   "ms_per_move_b": 0.010536732997018083
+  },
+  "3x3|robust|50": {
+   "games": 100,
+   "win": 0,
+   "draw": 65,
+   "loss": 35,
+   "win_rate": 0.0,
+   "nonloss_rate": 0.65,
+   "score": 0.325,
+   "win_first": 0,
+   "draw_first": 49,
+   "loss_first": 1,
+   "win_second": 0,
+   "draw_second": 16,
+   "loss_second": 34,
+   "avg_plies": 8.07,
+   "ms_per_move_a": 0.28344693795042536,
+   "ms_per_move_b": 0.026197754947372573
+  },
+  "3x3|max_ratio|50": {
+   "games": 100,
+   "win": 0,
+   "draw": 64,
+   "loss": 36,
+   "win_rate": 0.0,
+   "nonloss_rate": 0.64,
+   "score": 0.32,
+   "win_first": 0,
+   "draw_first": 48,
+   "loss_first": 2,
+   "win_second": 0,
+   "draw_second": 16,
+   "loss_second": 34,
+   "avg_plies": 8.08,
+   "ms_per_move_a": 0.4941339627822022,
+   "ms_per_move_b": 0.04596228642623356
+  },
+  "3x3|robust|100": {
+   "games": 100,
+   "win": 0,
+   "draw": 72,
+   "loss": 28,
+   "win_rate": 0.0,
+   "nonloss_rate": 0.72,
+   "score": 0.36,
+   "win_first": 0,
+   "draw_first": 50,
+   "loss_first": 0,
+   "win_second": 0,
+   "draw_second": 22,
+   "loss_second": 28,
+   "avg_plies": 8.28,
+   "ms_per_move_a": 0.6812110724577699,
+   "ms_per_move_b": 0.011043072472031764
+  },
+  "3x3|max_ratio|100": {
+   "games": 100,
+   "win": 0,
+   "draw": 71,
+   "loss": 29,
+   "win_rate": 0.0,
+   "nonloss_rate": 0.71,
+   "score": 0.355,
+   "win_first": 0,
+   "draw_first": 50,
+   "loss_first": 0,
+   "win_second": 0,
+   "draw_second": 21,
+   "loss_second": 29,
+   "avg_plies": 8.24,
+   "ms_per_move_a": 0.6456052694162078,
+   "ms_per_move_b": 0.011211390776635613
+  },
+  "3x3|robust|200": {
+   "games": 100,
+   "win": 0,
+   "draw": 76,
+   "loss": 24,
+   "win_rate": 0.0,
+   "nonloss_rate": 0.76,
+   "score": 0.38,
+   "win_first": 0,
+   "draw_first": 50,
+   "loss_first": 0,
+   "win_second": 0,
+   "draw_second": 26,
+   "loss_second": 24,
+   "avg_plies": 8.48,
+   "ms_per_move_a": 1.542078591980181,
+   "ms_per_move_b": 0.01192199292284317
+  },
+  "3x3|max_ratio|200": {
+   "games": 100,
+   "win": 0,
+   "draw": 76,
+   "loss": 24,
+   "win_rate": 0.0,
+   "nonloss_rate": 0.76,
+   "score": 0.38,
+   "win_first": 0,
+   "draw_first": 50,
+   "loss_first": 0,
+   "win_second": 0,
+   "draw_second": 26,
+   "loss_second": 24,
+   "avg_plies": 8.48,
+   "ms_per_move_a": 1.3929264339560417,
+   "ms_per_move_b": 0.011617851424609468
+  },
+  "9x9|robust_vs_ratio|200": {
+   "games": 100,
+   "win": 51,
+   "draw": 0,
+   "loss": 49,
+   "win_rate": 0.51,
+   "nonloss_rate": 0.51,
+   "score": 0.51,
+   "win_first": 31,
+   "draw_first": 0,
+   "loss_first": 19,
+   "win_second": 20,
+   "draw_second": 0,
+   "loss_second": 30,
+   "avg_plies": 16.49,
+   "ms_per_move_a": 15.549161339398724,
+   "ms_per_move_b": 15.503752520645637
+  },
+  "9x9|robust_vs_ratio|1000": {
+   "games": 100,
+   "win": 52,
+   "draw": 0,
+   "loss": 48,
+   "win_rate": 0.52,
+   "nonloss_rate": 0.52,
+   "score": 0.52,
+   "win_first": 29,
+   "draw_first": 0,
+   "loss_first": 21,
+   "win_second": 23,
+   "draw_second": 0,
+   "loss_second": 27,
+   "avg_plies": 12.66,
+   "ms_per_move_a": 84.19387257729068,
+   "ms_per_move_b": 85.07298068511672
+  }
+ }
+}

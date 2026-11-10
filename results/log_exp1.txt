@@ -1,0 +1,45 @@
+Bàn trống {'minimax': (549946, 0.705, 0.0), 'ab': (20866, 0.029, 0.0), 'ab_ord': (1640, 0.005, 0.0)}
+X ở góc (0,0) {'minimax': (59705, 0.079, 0.0), 'ab': (2788, 0.004, 0.0), 'ab_ord': (378, 0.001, 0.0)}
+X ở tâm (1,1) {'minimax': (55505, 0.072, 0.0), 'ab': (2459, 0.003, 0.0), 'ab_ord': (387, 0.001, 0.0)}
+X tâm, O góc {'minimax': (6812, 0.009, 0.0), 'ab': (832, 0.001, 0.0), 'ab_ord': (220, 0.001, 0.0)}
+1 0 {'minimax': (26, 0.0), 'ab': (26, 0.0), 'ab_ord': (26, 0.0)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+1 1 {'minimax': (29, 0.0), 'ab': (29, 0.0), 'ab_ord': (29, 0.0)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+1 2 {'minimax': (28, 0.0), 'ab': (28, 0.0), 'ab_ord': (28, 0.0)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+1 3 {'minimax': (31, 0.0), 'ab': (31, 0.0), 'ab_ord': (31, 0.0)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+1 4 {'minimax': (25, 0.0), 'ab': (25, 0.0), 'ab_ord': (25, 0.0)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+2 0 {'minimax': (685, 0.01), 'ab': (207, 0.0), 'ab_ord': (102, 0.0)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+2 1 {'minimax': (846, 0.01), 'ab': (444, 0.01), 'ab_ord': (91, 0.0)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+2 2 {'minimax': (793, 0.01), 'ab': (149, 0.0), 'ab_ord': (83, 0.0)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+2 3 {'minimax': (957, 0.01), 'ab': (219, 0.0), 'ab_ord': (119, 0.0)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+2 4 {'minimax': (631, 0.01), 'ab': (266, 0.0), 'ab_ord': (71, 0.0)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+3 0 {'minimax': (18926, 0.25), 'ab': (1806, 0.03), 'ab_ord': (875, 0.02)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+3 1 {'minimax': (25609, 0.36), 'ab': (6598, 0.08), 'ab_ord': (1135, 0.02)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+3 2 {'minimax': (23459, 0.3), 'ab': (1698, 0.02), 'ab_ord': (926, 0.01)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+3 3 {'minimax': (30352, 0.4), 'ab': (3831, 0.05), 'ab_ord': (1121, 0.02)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+3 4 {'minimax': (16700, 0.21), 'ab': (2969, 0.04), 'ab_ord': (681, 0.01)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+4 0 {'minimax': (546860, 7.96), 'ab': (32546, 0.41), 'ab_ord': (2485, 0.06)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+4 1 {'minimax': (802751, 10.45), 'ab': (80633, 1.02), 'ab_ord': (3274, 0.11)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+4 2 {'minimax': (719128, 9.52), 'ab': (11633, 0.15), 'ab_ord': (1739, 0.06)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+4 3 {'ab': (21490, 0.28), 'ab_ord': (4279, 0.1)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+4 4 {'ab': (46547, 0.58), 'ab_ord': (2475, 0.05)}
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json
+Đã lưu /home/claude/tictactoe_ai/results/e1_nodes.json

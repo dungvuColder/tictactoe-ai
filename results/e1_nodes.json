@@ -1,0 +1,696 @@
+{
+ "3x3": [
+  {
+   "root": "Bàn trống",
+   "minimax": {
+    "nodes": 549946,
+    "leaves": 255168,
+    "cutoffs": 0,
+    "time": 0.7047595510000519,
+    "value": 0.0,
+    "move": 0
+   },
+   "ab": {
+    "nodes": 20866,
+    "leaves": 8453,
+    "cutoffs": 7692,
+    "time": 0.02903352799989989,
+    "value": 0.0,
+    "move": 0
+   },
+   "ab_ord": {
+    "nodes": 1640,
+    "leaves": 592,
+    "cutoffs": 750,
+    "time": 0.005263178999939555,
+    "value": 0.0,
+    "move": 5
+   }
+  },
+  {
+   "root": "X ở góc (0,0)",
+   "minimax": {
+    "nodes": 59705,
+    "leaves": 27732,
+    "cutoffs": 0,
+    "time": 0.07944967499997801,
+    "value": 0.0,
+    "move": 5
+   },
+   "ab": {
+    "nodes": 2788,
+    "leaves": 1113,
+    "cutoffs": 1060,
+    "time": 0.0041293910001058975,
+    "value": 0.0,
+    "move": 5
+   },
+   "ab_ord": {
+    "nodes": 378,
+    "leaves": 145,
+    "cutoffs": 177,
+    "time": 0.0010948340000140888,
+    "value": 0.0,
+    "move": 5
+   }
+  },
+  {
+   "root": "X ở tâm (1,1)",
+   "minimax": {
+    "nodes": 55505,
+    "leaves": 25872,
+    "cutoffs": 0,
+    "time": 0.07215004199997566,
+    "value": 0.0,
+    "move": 0
+   },
+   "ab": {
+    "nodes": 2459,
+    "leaves": 1047,
+    "cutoffs": 965,
+    "time": 0.003447580000056405,
+    "value": 0.0,
+    "move": 0
+   },
+   "ab_ord": {
+    "nodes": 387,
+    "leaves": 140,
+    "cutoffs": 176,
+    "time": 0.0011472459998458362,
+    "value": 0.0,
+    "move": 0
+   }
+  },
+  {
+   "root": "X tâm, O góc",
+   "minimax": {
+    "nodes": 6812,
+    "leaves": 3198,
+    "cutoffs": 0,
+    "time": 0.008912672000178645,
+    "value": 0.0,
+    "move": 1
+   },
+   "ab": {
+    "nodes": 832,
+    "leaves": 335,
+    "cutoffs": 284,
+    "time": 0.0012045669998315134,
+    "value": 0.0,
+    "move": 1
+   },
+   "ab_ord": {
+    "nodes": 220,
+    "leaves": 74,
+    "cutoffs": 93,
+    "time": 0.0006532570000672422,
+    "value": 0.0,
+    "move": 2
+   }
+  }
+ ],
+ "9x9": [
+  {
+   "depth": 1,
+   "pos": 0,
+   "branching": 25,
+   "minimax": {
+    "nodes": 26,
+    "leaves": 25,
+    "cutoffs": 0,
+    "time": 0.0003393519998553529,
+    "value": 116.0,
+    "move": 22
+   },
+   "ab": {
+    "nodes": 26,
+    "leaves": 25,
+    "cutoffs": 0,
+    "time": 0.00030634400013695995,
+    "value": 116.0,
+    "move": 22
+   },
+   "ab_ord": {
+    "nodes": 26,
+    "leaves": 25,
+    "cutoffs": 0,
+    "time": 0.00034906500013676123,
+    "value": 116.0,
+    "move": 22
+   },
+   "same_value": true
+  },
+  {
+   "depth": 1,
+   "pos": 1,
+   "branching": 28,
+   "minimax": {
+    "nodes": 29,
+    "leaves": 28,
+    "cutoffs": 0,
+    "time": 0.0003590530000110448,
+    "value": 30.0,
+    "move": 35
+   },
+   "ab": {
+    "nodes": 29,
+    "leaves": 28,
+    "cutoffs": 0,
+    "time": 0.0003945519999888347,
+    "value": 30.0,
+    "move": 35
+   },
+   "ab_ord": {
+    "nodes": 29,
+    "leaves": 28,
+    "cutoffs": 0,
+    "time": 0.0003849919999083795,
+    "value": 30.0,
+    "move": 53
+   },
+   "same_value": true
+  },
+  {
+   "depth": 1,
+   "pos": 2,
+   "branching": 27,
+   "minimax": {
+    "nodes": 28,
+    "leaves": 27,
+    "cutoffs": 0,
+    "time": 0.0004005999999208143,
+    "value": 2500000,
+    "move": 22
+   },
+   "ab": {
+    "nodes": 28,
+    "leaves": 27,
+    "cutoffs": 0,
+    "time": 0.000337407999950301,
+    "value": 2500000,
+    "move": 22
+   },
+   "ab_ord": {
+    "nodes": 28,
+    "leaves": 27,
+    "cutoffs": 0,
+    "time": 0.0003754680001293309,
+    "value": 2500000,
+    "move": 22
+   },
+   "same_value": true
+  },
+  {
+   "depth": 1,
+   "pos": 3,
+   "branching": 30,
+   "minimax": {
+    "nodes": 31,
+    "leaves": 30,
+    "cutoffs": 0,
+    "time": 0.0003963529998145532,
+    "value": 1018.0,
+    "move": 47
+   },
+   "ab": {
+    "nodes": 31,
+    "leaves": 30,
+    "cutoffs": 0,
+    "time": 0.0003997490000529069,
+    "value": 1018.0,
+    "move": 47
+   },
+   "ab_ord": {
+    "nodes": 31,
+    "leaves": 30,
+    "cutoffs": 0,
+    "time": 0.0006600739998248173,
+    "value": 1018.0,
+    "move": 47
+   },
+   "same_value": true
+  },
+  {
+   "depth": 1,
+   "pos": 4,
+   "branching": 24,
+   "minimax": {
+    "nodes": 25,
+    "leaves": 24,
+    "cutoffs": 0,
+    "time": 0.0003007949999300763,
+    "value": 171.0,
+    "move": 34
+   },
+   "ab": {
+    "nodes": 25,
+    "leaves": 24,
+    "cutoffs": 0,
+    "time": 0.0002891260000978946,
+    "value": 171.0,
+    "move": 34
+   },
+   "ab_ord": {
+    "nodes": 25,
+    "leaves": 24,
+    "cutoffs": 0,
+    "time": 0.00034487099992475123,
+    "value": 171.0,
+    "move": 34
+   },
+   "same_value": true
+  },
+  {
+   "depth": 2,
+   "pos": 0,
+   "branching": 25,
+   "minimax": {
+    "nodes": 685,
+    "leaves": 659,
+    "cutoffs": 0,
+    "time": 0.008379213999887725,
+    "value": -11.0,
+    "move": 22
+   },
+   "ab": {
+    "nodes": 207,
+    "leaves": 181,
+    "cutoffs": 23,
+    "time": 0.0025471359999755805,
+    "value": -11.0,
+    "move": 22
+   },
+   "ab_ord": {
+    "nodes": 102,
+    "leaves": 76,
+    "cutoffs": 23,
+    "time": 0.0022398539999812783,
+    "value": -11.0,
+    "move": 22
+   },
+   "same_value": true
+  },
+  {
+   "depth": 2,
+   "pos": 1,
+   "branching": 28,
+   "minimax": {
+    "nodes": 846,
+    "leaves": 817,
+    "cutoffs": 0,
+    "time": 0.010581875000070795,
+    "value": -87.0,
+    "move": 36
+   },
+   "ab": {
+    "nodes": 444,
+    "leaves": 415,
+    "cutoffs": 21,
+    "time": 0.005626184999982797,
+    "value": -87.0,
+    "move": 36
+   },
+   "ab_ord": {
+    "nodes": 91,
+    "leaves": 62,
+    "cutoffs": 27,
+    "time": 0.0021013799998854665,
+    "value": -87.0,
+    "move": 36
+   },
+   "same_value": true
+  },
+  {
+   "depth": 2,
+   "pos": 2,
+   "branching": 27,
+   "minimax": {
+    "nodes": 793,
+    "leaves": 765,
+    "cutoffs": 0,
+    "time": 0.010342951999973593,
+    "value": 5000000,
+    "move": 22
+   },
+   "ab": {
+    "nodes": 149,
+    "leaves": 121,
+    "cutoffs": 25,
+    "time": 0.0017395299998952396,
+    "value": 5000000,
+    "move": 22
+   },
+   "ab_ord": {
+    "nodes": 83,
+    "leaves": 55,
+    "cutoffs": 26,
+    "time": 0.002103365000039048,
+    "value": 5000000,
+    "move": 22
+   },
+   "same_value": true
+  },
+  {
+   "depth": 2,
+   "pos": 3,
+   "branching": 30,
+   "minimax": {
+    "nodes": 957,
+    "leaves": 926,
+    "cutoffs": 0,
+    "time": 0.012743923000016366,
+    "value": 124.0,
+    "move": 55
+   },
+   "ab": {
+    "nodes": 219,
+    "leaves": 188,
+    "cutoffs": 26,
+    "time": 0.0027600179998898966,
+    "value": 124.0,
+    "move": 55
+   },
+   "ab_ord": {
+    "nodes": 119,
+    "leaves": 88,
+    "cutoffs": 28,
+    "time": 0.0028200509998441703,
+    "value": 124.0,
+    "move": 55
+   },
+   "same_value": true
+  },
+  {
+   "depth": 2,
+   "pos": 4,
+   "branching": 24,
+   "minimax": {
+    "nodes": 631,
+    "leaves": 606,
+    "cutoffs": 0,
+    "time": 0.008613255000000208,
+    "value": 62.0,
+    "move": 34
+   },
+   "ab": {
+    "nodes": 266,
+    "leaves": 241,
+    "cutoffs": 17,
+    "time": 0.003308049999986906,
+    "value": 62.0,
+    "move": 34
+   },
+   "ab_ord": {
+    "nodes": 71,
+    "leaves": 46,
+    "cutoffs": 23,
+    "time": 0.001649678999910975,
+    "value": 62.0,
+    "move": 34
+   },
+   "same_value": true
+  },
+  {
+   "depth": 3,
+   "pos": 0,
+   "branching": 25,
+   "minimax": {
+    "nodes": 18926,
+    "leaves": 18241,
+    "cutoffs": 0,
+    "time": 0.2501544049998756,
+    "value": 320.0,
+    "move": 22
+   },
+   "ab": {
+    "nodes": 1806,
+    "leaves": 1661,
+    "cutoffs": 100,
+    "time": 0.03307773200003794,
+    "value": 320.0,
+    "move": 22
+   },
+   "ab_ord": {
+    "nodes": 875,
+    "leaves": 774,
+    "cutoffs": 71,
+    "time": 0.02319084600003407,
+    "value": 320.0,
+    "move": 22
+   },
+   "same_value": true
+  },
+  {
+   "depth": 3,
+   "pos": 1,
+   "branching": 28,
+   "minimax": {
+    "nodes": 25609,
+    "leaves": 24763,
+    "cutoffs": 0,
+    "time": 0.3649234790000264,
+    "value": 39.0,
+    "move": 53
+   },
+   "ab": {
+    "nodes": 6598,
+    "leaves": 6171,
+    "cutoffs": 294,
+    "time": 0.0820488879999175,
+    "value": 39.0,
+    "move": 53
+   },
+   "ab_ord": {
+    "nodes": 1135,
+    "leaves": 990,
+    "cutoffs": 113,
+    "time": 0.019969947999925353,
+    "value": 39.0,
+    "move": 53
+   },
+   "same_value": true
+  },
+  {
+   "depth": 3,
+   "pos": 2,
+   "branching": 27,
+   "minimax": {
+    "nodes": 23459,
+    "leaves": 22666,
+    "cutoffs": 0,
+    "time": 0.3048215149999578,
+    "value": 999999997,
+    "move": 22
+   },
+   "ab": {
+    "nodes": 1698,
+    "leaves": 1548,
+    "cutoffs": 111,
+    "time": 0.020669774999987567,
+    "value": 999999997,
+    "move": 22
+   },
+   "ab_ord": {
+    "nodes": 926,
+    "leaves": 843,
+    "cutoffs": 54,
+    "time": 0.014920585000027131,
+    "value": 999999997,
+    "move": 22
+   },
+   "same_value": true
+  },
+  {
+   "depth": 3,
+   "pos": 3,
+   "branching": 30,
+   "minimax": {
+    "nodes": 30352,
+    "leaves": 29395,
+    "cutoffs": 0,
+    "time": 0.3977975850000348,
+    "value": 1089.0,
+    "move": 55
+   },
+   "ab": {
+    "nodes": 3831,
+    "leaves": 3573,
+    "cutoffs": 197,
+    "time": 0.0496639430000414,
+    "value": 1089.0,
+    "move": 55
+   },
+   "ab_ord": {
+    "nodes": 1121,
+    "leaves": 1002,
+    "cutoffs": 86,
+    "time": 0.019017474000065704,
+    "value": 1089.0,
+    "move": 55
+   },
+   "same_value": true
+  },
+  {
+   "depth": 3,
+   "pos": 4,
+   "branching": 24,
+   "minimax": {
+    "nodes": 16700,
+    "leaves": 16069,
+    "cutoffs": 0,
+    "time": 0.20846924200009198,
+    "value": 373.0,
+    "move": 34
+   },
+   "ab": {
+    "nodes": 2969,
+    "leaves": 2757,
+    "cutoffs": 147,
+    "time": 0.036514249999981985,
+    "value": 373.0,
+    "move": 34
+   },
+   "ab_ord": {
+    "nodes": 681,
+    "leaves": 610,
+    "cutoffs": 45,
+    "time": 0.010910918000035963,
+    "value": 373.0,
+    "move": 34
+   },
+   "same_value": true
+  },
+  {
+   "depth": 4,
+   "pos": 0,
+   "branching": 25,
+   "minimax": {
+    "nodes": 546860,
+    "leaves": 527934,
+    "cutoffs": 0,
+    "time": 7.9630506470000455,
+    "value": 13.0,
+    "move": 36
+   },
+   "ab": {
+    "nodes": 32546,
+    "leaves": 29382,
+    "cutoffs": 2659,
+    "time": 0.4141874489998827,
+    "value": 13.0,
+    "move": 36
+   },
+   "ab_ord": {
+    "nodes": 2485,
+    "leaves": 1583,
+    "cutoffs": 841,
+    "time": 0.062099551000073916,
+    "value": 13.0,
+    "move": 36
+   },
+   "same_value": true
+  },
+  {
+   "depth": 4,
+   "pos": 1,
+   "branching": 28,
+   "minimax": {
+    "nodes": 802751,
+    "leaves": 777142,
+    "cutoffs": 0,
+    "time": 10.45403945199996,
+    "value": -188.0,
+    "move": 36
+   },
+   "ab": {
+    "nodes": 80633,
+    "leaves": 74708,
+    "cutoffs": 4833,
+    "time": 1.0164115869999932,
+    "value": -188.0,
+    "move": 36
+   },
+   "ab_ord": {
+    "nodes": 3274,
+    "leaves": 2183,
+    "cutoffs": 1022,
+    "time": 0.11145548499985125,
+    "value": -188.0,
+    "move": 36
+   },
+   "same_value": true
+  },
+  {
+   "depth": 4,
+   "pos": 2,
+   "branching": 27,
+   "minimax": {
+    "nodes": 719128,
+    "leaves": 695785,
+    "cutoffs": 0,
+    "time": 9.520697594000012,
+    "value": 999999997,
+    "move": 22
+   },
+   "ab": {
+    "nodes": 11633,
+    "leaves": 10257,
+    "cutoffs": 1206,
+    "time": 0.14539524300016637,
+    "value": 999999997,
+    "move": 22
+   },
+   "ab_ord": {
+    "nodes": 1739,
+    "leaves": 843,
+    "cutoffs": 867,
+    "time": 0.057130760999825725,
+    "value": 999999997,
+    "move": 22
+   },
+   "same_value": true
+  },
+  {
+   "depth": 4,
+   "pos": 3,
+   "branching": 30,
+   "ab": {
+    "nodes": 21490,
+    "leaves": 18871,
+    "cutoffs": 2276,
+    "time": 0.2758348059999207,
+    "value": 222.0,
+    "move": 35
+   },
+   "ab_ord": {
+    "nodes": 4279,
+    "leaves": 3063,
+    "cutoffs": 1115,
+    "time": 0.10403795499996704,
+    "value": 222.0,
+    "move": 35
+   }
+  },
+  {
+   "depth": 4,
+   "pos": 4,
+   "branching": 24,
+   "ab": {
+    "nodes": 46547,
+    "leaves": 42783,
+    "cutoffs": 3273,
+    "time": 0.5792159400000401,
+    "value": 116.0,
+    "move": 34
+   },
+   "ab_ord": {
+    "nodes": 2475,
+    "leaves": 1749,
+    "cutoffs": 654,
+    "time": 0.04717771300011009,
+    "value": 116.0,
+    "move": 34
+   }
+  }
+ ]
+}

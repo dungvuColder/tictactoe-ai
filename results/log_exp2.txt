@@ -1,0 +1,38 @@
+Đã lưu /home/claude/tictactoe_ai/results/e2_never_lose.json
+random 10 loss lines: 740 / 4108 opt: 3254 / 3633
+random 25 loss lines: 360 / 3453 opt: 3030 / 3215
+random 50 loss lines: 213 / 3358 opt: 3016 / 3126
+random 100 loss lines: 116 / 3130 opt: 2880 / 2957
+random 200 loss lines: 70 / 3078 opt: 2844 / 2893
+random 500 loss lines: 18 / 2949 opt: 2563 / 2575
+random 1000 loss lines: 3 / 2869 opt: 2331 / 2334
+random 2000 loss lines: 0 / 2857 opt: 2157 / 2157
+heuristic 10 loss lines: 356 / 4494 opt: 3809 / 3949
+heuristic 25 loss lines: 186 / 3513 opt: 3362 / 3429
+heuristic 50 loss lines: 124 / 3345 opt: 3244 / 3295
+heuristic 100 loss lines: 74 / 3219 opt: 3008 / 3041
+heuristic 200 loss lines: 55 / 3396 opt: 3197 / 3220
+heuristic 500 loss lines: 6 / 2973 opt: 2500 / 2503
+heuristic 1000 loss lines: 0 / 2868 opt: 2155 / 2155
+heuristic 2000 loss lines: 0 / 2871 opt: 2161 / 2161
+  [E2] 40/800 ván, 1s
+  [E2] 80/800 ván, 2s
+  [E2] 120/800 ván, 3s
+  [E2] 160/800 ván, 4s
+  [E2] 200/800 ván, 4s
+  [E2] 240/800 ván, 5s
+  [E2] 280/800 ván, 6s
+  [E2] 320/800 ván, 7s
+  [E2] 360/800 ván, 8s
+  [E2] 400/800 ván, 9s
+  [E2] 440/800 ván, 10s
+  [E2] 480/800 ván, 11s
+  [E2] 520/800 ván, 11s
+  [E2] 560/800 ván, 12s
+  [E2] 600/800 ván, 13s
+  [E2] 640/800 ván, 14s
+  [E2] 680/800 ván, 15s
+  [E2] 720/800 ván, 16s
+  [E2] 760/800 ván, 16s
+  [E2] 800/800 ván, 17s
+Đã lưu /home/claude/tictactoe_ai/results/e2_never_lose.json

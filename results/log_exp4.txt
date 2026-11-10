@@ -1,0 +1,28 @@
+{'it': 25, 'positions': 400, 'disagree': 11, 'robust_optimal': 376, 'ratio_optimal': 378}
+{'it': 50, 'positions': 400, 'disagree': 5, 'robust_optimal': 386, 'ratio_optimal': 385}
+{'it': 100, 'positions': 400, 'disagree': 12, 'robust_optimal': 392, 'ratio_optimal': 393}
+{'it': 200, 'positions': 400, 'disagree': 6, 'robust_optimal': 395, 'ratio_optimal': 395}
+{'it': 500, 'positions': 400, 'disagree': 4, 'robust_optimal': 398, 'ratio_optimal': 398}
+{'it': 1000, 'positions': 400, 'disagree': 9, 'robust_optimal': 399, 'ratio_optimal': 399}
+Đã lưu /home/claude/tictactoe_ai/results/e4_root_stats.json
+  [E4] 50/1000 ván, 3s
+  [E4] 100/1000 ván, 9s
+  [E4] 150/1000 ván, 14s
+  [E4] 200/1000 ván, 17s
+  [E4] 250/1000 ván, 22s
+  [E4] 300/1000 ván, 26s
+  [E4] 350/1000 ván, 32s
+  [E4] 400/1000 ván, 37s
+  [E4] 450/1000 ván, 46s
+  [E4] 500/1000 ván, 61s
+  [E4] 550/1000 ván, 70s
+  [E4] 600/1000 ván, 79s
+  [E4] 650/1000 ván, 89s
+  [E4] 700/1000 ván, 94s
+  [E4] 750/1000 ván, 96s
+  [E4] 800/1000 ván, 104s
+  [E4] 850/1000 ván, 111s
+  [E4] 900/1000 ván, 117s
+  [E4] 950/1000 ván, 127s
+  [E4] 1000/1000 ván, 136s
+Đã lưu /home/claude/tictactoe_ai/results/e4_root_stats.json

@@ -1,0 +1,35 @@
+{'depth': 1, 'nodes': 44, 'reference': 44, 'ok': True, 'time': 0.00014968400000725524}
+{'depth': 2, 'nodes': 1920, 'reference': 1920, 'ok': True, 'time': 0.005424302999927022}
+{'depth': 3, 'nodes': 79666, 'reference': 79666, 'ok': True, 'time': 0.21858258999986901}
+{'depth': 4, 'nodes': 3290240, 'reference': 3290240, 'ok': True, 'time': 10.071013205999861}
+Khai cuộc 1 {'minimax': 45, 'ab': 45, 'ab_mvvlva': 45} True
+Khai cuộc 2 {'minimax': 1965, 'ab': 523, 'ab_mvvlva': 130} True
+Khai cuộc 3 {'minimax': 81631, 'ab': 8295, 'ab_mvvlva': 1855} True
+Trung cuộc A (sau 16 nửa nước) 1 {'minimax': 38, 'ab': 38, 'ab_mvvlva': 38} True
+Trung cuộc A (sau 16 nửa nước) 2 {'minimax': 950, 'ab': 212, 'ab_mvvlva': 98} True
+Trung cuộc A (sau 16 nửa nước) 3 {'minimax': 35416, 'ab': 4509, 'ab_mvvlva': 1347} True
+Trung cuộc B (sau 30 nửa nước) 1 {'minimax': 39, 'ab': 39, 'ab_mvvlva': 39} True
+Trung cuộc B (sau 30 nửa nước) 2 {'minimax': 1438, 'ab': 148, 'ab_mvvlva': 107} True
+Trung cuộc B (sau 30 nửa nước) 3 {'minimax': 53697, 'ab': 2417, 'ab_mvvlva': 1193} True
+Đã lưu /home/claude/tictactoe_ai/results/e6_xiangqi.json
+  [E6] 9/180 ván, 26s
+  [E6] 18/180 ván, 48s
+  [E6] 27/180 ván, 108s
+  [E6] 36/180 ván, 208s
+  [E6] 45/180 ván, 334s
+  [E6] 54/180 ván, 388s
+  [E6] 63/180 ván, 436s
+  [E6] 72/180 ván, 474s
+  [E6] 81/180 ván, 537s
+  [E6] 90/180 ván, 590s
+  [E6] 99/180 ván, 668s
+  [E6] 108/180 ván, 727s
+  [E6] 117/180 ván, 761s
+  [E6] 126/180 ván, 819s
+  [E6] 135/180 ván, 852s
+  [E6] 144/180 ván, 904s
+  [E6] 153/180 ván, 979s
+  [E6] 162/180 ván, 1043s
+  [E6] 171/180 ván, 1099s
+  [E6] 180/180 ván, 1162s
+Đã lưu /home/claude/tictactoe_ai/results/e6_xiangqi.json
