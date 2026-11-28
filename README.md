@@ -63,3 +63,16 @@ python make_figures.py
 ```
 Mọi thực nghiệm dùng seed cố định; mỗi cấu hình ≥ 50 ván, đổi lượt đi trước giữa các ván
 (ván chẵn agent A đi trước, ván lẻ agent B đi trước).
+
+## Bài 2 bonus · Lập kế hoạch lấy hàng cho robot kho
+
+Module mô phỏng tìm đường một đích hoặc lấy đủ nhiều điểm rồi quay về depot. Sau khi cài `requirements.txt`, chạy từ gốc repo.
+
+```powershell
+python -m bonus.warehouse.cli --map bonus/warehouse/maps/weighted.json --mode single --algorithm astar --pickup A --json
+python -m bonus.warehouse.gui
+python -m bonus.warehouse.benchmark --profile quick --repeats 3 --warmups 1
+python -m bonus.warehouse.plotting
+```
+
+Xem [hướng dẫn module](bonus/warehouse/README.md), [bốn kịch bản demo](bonus/warehouse/DEMO.md) và [báo cáo thực nghiệm full](bonus/warehouse/REPORT.md).

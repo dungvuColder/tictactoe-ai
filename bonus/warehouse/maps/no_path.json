@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "grid": [
+    [1, 0, 1],
+    [1, 0, 1]
+  ],
+  "start": [0, 0],
+  "depot": [0, 0],
+  "pickups": [{"id": "A", "position": [0, 2]}]
+}
