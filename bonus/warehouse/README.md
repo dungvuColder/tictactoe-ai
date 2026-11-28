@@ -86,17 +86,23 @@ Xem sáu [bản đồ mẫu](maps/) hoặc schema đầy đủ trong [DESIGN.md]
 ## Benchmark, plotting và dữ liệu đã lưu
 
 ```powershell
-python -m bonus.warehouse.benchmark --profile quick
+python -m bonus.warehouse.benchmark --profile quick --repeats 3 --warmups 1
 python -m bonus.warehouse.plotting
-python -m bonus.warehouse.benchmark --profile full
+python -m bonus.warehouse.benchmark --profile full --repeats 5 --warmups 1
 python -m bonus.warehouse.plotting --profile full
 python -m bonus.warehouse.benchmark --help
 python -m bonus.warehouse.plotting --help
 ```
 
-`quick` kiểm tra toàn bộ pipeline. `full` dùng nhiều bản đồ và seed hơn. Benchmark lưu bản đồ, danh sách nhiệm vụ và từng kết quả trong `results/<profile>/<mã cấu hình>/` bên dưới module. Chạy lại cùng cấu hình tiếp tục các mẫu còn thiếu. Dùng `--output-dir PATH` để chọn thư mục đầu ra khác. Plotting mặc định vẽ lần quick mới nhất và hỗ trợ `--run-dir PATH` để chỉ định dữ liệu cụ thể.
+`quick` kiểm tra toàn bộ pipeline. `full` dùng nhiều bản đồ và seed hơn. `--repeats N` nhận số nguyên từ 1 trở lên, mặc định **5**. `--warmups N` nhận số nguyên không âm, mặc định **1**.
+
+Mỗi nhiệm vụ chạy các biến thể xen kẽ theo vòng. Vòng chính thức thứ `r` xoay trái danh sách biến thể `(task_index + r - 1) % số_biến_thể` vị trí. Các vòng làm nóng dùng số vòng từ `-warmups` đến `-1` thay cho `r - 1`. Benchmark chạy tuần tự, nạp bản đồ mới cho từng lượt, dùng cùng ngân sách cho warmup và benchmark, và tắt callback sự kiện.
+
+Schema 2 lưu bản đồ, nhiệm vụ, manifest và từng bản ghi chính thức trong `results/<profile>/<mã cấu hình>/`. Mỗi bản ghi có chỉ số lần lặp, thứ tự dự kiến trong vòng và chỉ số lượt đo trong phiên. Thư mục `sessions/` ghi thời điểm, kết quả và số lượt làm nóng của từng phiên. Chạy lại **cùng lệnh** tiếp tục đúng các lần đo còn thiếu và làm nóng lại các biến thể còn việc trong từng nhiệm vụ. Dùng `--output-dir PATH` để chạy độc lập ở thư mục khác.
+
+Plotting mặc định chọn lần quick mới nhất. Dùng `--run-dir PATH` để chỉ định dữ liệu cụ thể. Với schema 1 cũ, bảng và hình mới được ghi vào thư mục bên cạnh có hậu tố `-analysis-v2`. Bảng `repeat_details.md` ghi trung vị, Q1, Q3 và IQR của các lượt thành công trong từng nhiệm vụ. So sánh theo nhóm dùng một trung vị thời gian cho mỗi nhiệm vụ, trên tập chung đủ lượt thành công và nhất quán.
 
 - [Kịch bản demo](DEMO.md) có bốn ca, các bước trình bày và kết quả đã đo.
 - [Báo cáo](REPORT.md) phân tích kết quả full và ghi lệnh tái lập. [Tiến độ](PROGRESS.md) lưu các lần kiểm tra.
-- [Bảng quick](results/quick/499428006f3cdd0d2ad4/summary.md) và [đồ thị quick](results/quick/499428006f3cdd0d2ad4/figures/).
-- [Bảng full](results/full/80bda12138afbdcca4ef/summary.md), [dữ liệu thô full](results/full/80bda12138afbdcca4ef/raw/) và [đồ thị full](results/full/80bda12138afbdcca4ef/figures/).
+- Dữ liệu đo lặp (schema 2) gồm [quick với 3 lượt đo](results/quick/e3e485108211f8988adf/summary.md) và [full với 5 lượt đo](results/full/2784d6551c6e7550b5b6/summary.md).
+- Dữ liệu một lần đo (schema 1) gồm [bảng quick](results/quick/499428006f3cdd0d2ad4/summary.md) và [bảng full](results/full/80bda12138afbdcca4ef/summary.md), kèm dữ liệu thô và hình trong các thư mục tương ứng.

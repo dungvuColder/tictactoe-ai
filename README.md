@@ -71,7 +71,7 @@ Module mô phỏng tìm đường một đích hoặc lấy đủ nhiều điể
 ```powershell
 python -m bonus.warehouse.cli --map bonus/warehouse/maps/weighted.json --mode single --algorithm astar --pickup A --json
 python -m bonus.warehouse.gui
-python -m bonus.warehouse.benchmark --profile quick
+python -m bonus.warehouse.benchmark --profile quick --repeats 3 --warmups 1
 python -m bonus.warehouse.plotting
 ```
 

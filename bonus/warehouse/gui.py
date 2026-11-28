@@ -93,17 +93,29 @@ def _solve(
     mailbox.put(outcome)
 
 
+class _StartupInputError(ValueError):
+    """Lỗi đầu vào có thể báo qua argparse khi mở GUI."""
+
+
 class WarehouseApp:
     def __init__(self, args):
-        self.samples = tuple(name for name in SAMPLE_NAMES if (MAPS_DIR / f"{name}.json").is_file())
         self.map_name = args.map
-        self.warehouse = load_map(MAPS_DIR / f"{self.map_name}.json")
+        try:
+            self.warehouse = load_map(MAPS_DIR / f"{self.map_name}.json")
+        except (OSError, ValueError) as exc:
+            raise _StartupInputError(f"Không thể nạp bản đồ {self.map_name!r}: {exc}") from exc
+        self.samples = tuple(name for name in SAMPLE_NAMES if (MAPS_DIR / f"{name}.json").is_file())
         self.mode = args.mode
         self.algorithm = args.algorithm
         self.heuristic = args.heuristic
-        self.pickup_id = args.pickup if args.pickup is not None else self.warehouse.pickups[0].id
-        if self.mode == "single":
-            SingleGoalProblem(self.warehouse, self.pickup_id)
+        pickup_ids = tuple(pickup.id for pickup in self.warehouse.pickups)
+        self.pickup_id = args.pickup if args.pickup is not None else pickup_ids[0]
+        if self.pickup_id not in pickup_ids:
+            available = ", ".join(repr(pickup_id) for pickup_id in pickup_ids)
+            raise _StartupInputError(
+                f"ID điểm lấy hàng {self.pickup_id!r} không tồn tại trên bản đồ {self.map_name!r}. "
+                f"Các ID có thể chọn: {available}."
+            )
         self.replay_limit = args.replay_limit
         self.speed_index = 1
         self.task_id = 0
@@ -435,10 +447,13 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("Thuật toán không được hỗ trợ trong chế độ đã chọn")
     if args.replay_limit < 0 or (args.frames is not None and args.frames < 1):
         parser.error("--replay-limit phải không âm và --frames phải dương")
-    pg.display.init()
-    pg.font.init()
     try:
-        app = WarehouseApp(args)
+        pg.display.init()
+        pg.font.init()
+        try:
+            app = WarehouseApp(args)
+        except _StartupInputError as exc:
+            parser.error(str(exc))
         if args.autostart:
             app.start_search()
         app.run(args.frames)

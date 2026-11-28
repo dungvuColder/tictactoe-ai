@@ -1,5 +1,7 @@
 # Bài 2 bonus · Ứng dụng A* vào lập kế hoạch lấy hàng cho robot kho
 
+Các số liệu ở mục 6–8 thuộc phép đo một lượt (schema 1). Mục 11 trình bày phép đo lặp (schema 2) và đối chiếu với các kết luận ban đầu.
+
 ## 1. Bài toán thực tế và phạm vi mô phỏng
 
 Robot kho cần chọn đường đi qua các vị trí lấy hàng với tổng chi phí di chuyển thấp. Đường ít bước có thể tốn nhiều hơn nếu đi qua ô có chi phí cao. Khi đơn hàng có nhiều điểm lấy, thứ tự ghé cũng ảnh hưởng đến tổng chi phí.
@@ -120,9 +122,9 @@ Một phép duyệt liên thông độc lập trên các ô đi được khớp 
 - Full khảo sát tối đa năm điểm lấy hàng và sáu seed. Không gian trạng thái tăng theo số bit hàng, nên kết quả của lưới nhỏ chưa định lượng được khả năng mở rộng ở đơn lớn. Mỗi biến thể chỉ đo một lần trên mỗi nhiệm vụ và trên một môi trường. Sai khác nhỏ về thời gian có thể do tải máy.
 - Các hướng mở rộng gồm dùng bản đồ có lối đi và trọng số được hiệu chỉnh, tách tập liên thông để đánh giá khả năng lập kế hoạch, đo lặp với thứ tự hoán đổi, và thử các cận dưới có tính đến đường vòng. Đánh giá robot thực tế hoặc nhiều robot cần dữ liệu và mô hình chuyển động phù hợp.
 
-## 10. Lệnh tái lập
+## 10. Lệnh tái lập phép đo một lần (schema 1)
 
-Từ gốc repo, chạy cùng mã nguồn với Python đã cài các gói trong `requirements.txt`. Các lệnh mặc định tiếp tục cấu hình có sẵn hoặc tạo thư mục mới khi thay đổi môi trường hay mã tính toán.
+Phần này ghi lệnh lịch sử dùng mã benchmark ở commit `cb1e7f9`. Benchmark hiện tại tạo schema 2 với các lần đo lặp. Để phân tích lại dữ liệu cũ trên mã hiện tại, chỉ định rõ `--run-dir bonus/warehouse/results/full/80bda12138afbdcca4ef` khi chạy plotting.
 
 ```powershell
 python -m bonus.warehouse.benchmark --profile full
@@ -153,3 +155,38 @@ python -m bonus.warehouse.benchmark --profile full
 ```
 
 Để đo lại độc lập, thêm `--output-dir PATH` với một thư mục mới rồi dùng cùng đối số với plotting. Profile quick đã chạy ở lượt 7 và full đã chạy đủ ở lượt 8. Trong ma trận full hiện tại, không còn cấu hình chưa chạy.
+
+## 11. Đo thời gian lặp (schema 2)
+
+Mỗi phiên chạy tuần tự, làm nóng từng biến thể theo cùng ngân sách, rồi xen kẽ các lượt chính thức theo vòng trên từng nhiệm vụ. Thứ tự xoay theo chỉ số nhiệm vụ và vòng lặp. Một lượt dùng đối tượng bản đồ mới và tắt callback. Đồng hồ bỏ thời gian đọc JSON, tính cả khởi tạo bài toán, heuristic, tìm kiếm và dựng nghiệm.
+
+Với mỗi nhiệm vụ–biến thể, lấy trung vị của các lượt thành công. Q1 và Q3 dùng phân vị nội suy khi có ít nhất ba lượt thành công. IQR là Q3 trừ Q1. Bảng theo nhóm chỉ so sánh các nhiệm vụ mà toàn bộ biến thể đều có đủ lượt thành công và cho kết quả nhất quán. Các trung vị theo nhiệm vụ được tổng hợp lần nữa. Thanh Q1–Q3 trên biểu đồ đo sự phân tán **giữa các nhiệm vụ**, còn bảng chi tiết đo sự phân tán **giữa các lượt trên cùng nhiệm vụ**. Các khoảng này không phải khoảng tin cậy.
+
+### 11.1. Phạm vi đã chạy
+
+| Profile | Nhiệm vụ | Lượt đo mỗi biến thể | Warmup đã chạy | Chính thức đã ghi | Success | No path |
+|---|---:|---:|---:|---:|---:|---:|
+| Quick | 40 | 3 | 152 | 456/456 | 321 | 135 |
+| Full | 252 | 5 | 936 | 4.680/4.680 | 3.400 | 1.280 |
+
+Không có lượt timeout, chạm giới hạn nút, bị hủy hoặc thiếu trong hai bộ schema 2. Các lượt thành công của từng nhiệm vụ–biến thể nhất quán về chi phí, bước, bộ đếm nút, đỉnh frontier và thứ tự lấy hàng. Chạy lại quick giữ đủ 456 bản ghi, ghi thêm một nhật ký phiên với 0 warmup và 0 lượt chính thức.
+
+- Quick có [bảng nhóm](results/quick/e3e485108211f8988adf/summary.md), [chi tiết độ dao động](results/quick/e3e485108211f8988adf/repeat_details.md) và [biểu đồ](results/quick/e3e485108211f8988adf/figures/).
+- Full có [bảng nhóm](results/full/2784d6551c6e7550b5b6/summary.md), [chi tiết độ dao động](results/full/2784d6551c6e7550b5b6/repeat_details.md), [biểu đồ](results/full/2784d6551c6e7550b5b6/figures/), [manifest](results/full/2784d6551c6e7550b5b6/manifest.json), [nhật ký phiên](results/full/2784d6551c6e7550b5b6/sessions/) và [dữ liệu từng lượt](results/full/2784d6551c6e7550b5b6/raw/).
+
+### 11.2. Đối chiếu với kết luận cũ
+
+- **Chi phí.** A* vẫn khớp UCS trên 44/44 nhiệm vụ thành công ở mỗi nhóm một đích và 93/93 nhiệm vụ nhiều điểm cho mỗi heuristic. Greedy vẫn tốn hơn UCS ở 44/44 nhiệm vụ một đích có trọng số thành công. Với năm điểm, nearest-neighbor tốn hơn UCS ở 17/30 nhiệm vụ chung, tối đa 16%. Trung vị tỷ số thời gian nearest-neighbor/UCS ở nhóm này là **0,0538**, tính trên thời gian trung vị từng cặp.
+- **A* một đích.** Trên bản đồ đồng nhất, trung vị tỷ số thời gian A*/UCS là **0,8568**, với Q1–Q3 giữa các nhiệm vụ là **0,7808–1,0282**. Khoảng này đi qua 1 nên ưu thế thời gian thay đổi theo nhiệm vụ. Trên bản đồ có trọng số, tỷ số trung vị là **1,1908**, với Q1–Q3 **1,0777–1,3123**. Kết quả đo lặp củng cố quan sát rằng giảm số nút có thể đi cùng thời gian cao hơn.
+- **Chi phí MST.** Với năm điểm, trung vị tỷ số số nút MST/max là **0,9856** và tỷ số thời gian là **1,4717**, gần kết quả một lượt **1,4705**. IQR trong từng nhiệm vụ chia cho trung vị thời gian có trung vị **4,56%** với MST và **6,16%** với max trong nhóm này. Q1 thời gian của MST cao hơn Q3 của max ở **30/30** nhiệm vụ năm điểm và **27/31** nhiệm vụ ba điểm. Đây là so sánh mô tả trên máy đã đo. Với một điểm, khoảng phân tán tách theo hướng đó chỉ ở **6/32** nhiệm vụ, nên không suy rộng chênh lệch thời gian cho mọi nhiệm vụ.
+
+### 11.3. Lệnh đo và phân tích
+
+```powershell
+python -m bonus.warehouse.benchmark --profile quick --repeats 3 --warmups 1
+python -u -m bonus.warehouse.benchmark --profile full --repeats 5 --warmups 1
+.\.venv\warehouse-cpython\python.exe -m bonus.warehouse.plotting --run-dir bonus/warehouse/results/quick/e3e485108211f8988adf
+.\.venv\warehouse-cpython\python.exe -m bonus.warehouse.plotting --run-dir bonus/warehouse/results/full/2784d6551c6e7550b5b6
+```
+
+Chạy lại cùng lệnh benchmark để tiếp tục cấu hình đã lưu. Khi thay đổi môi trường hoặc mã đo, chương trình tạo mã cấu hình mới. Trên máy đã cài Matplotlib cho Python mặc định, có thể dùng `python` thay cho đường dẫn CPython portable trong hai lệnh plotting.

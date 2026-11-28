@@ -1,5 +1,22 @@
 # Tiến độ Bài 2 bonus
 
+## Đo thời gian lặp
+
+- Thêm `--repeats` và `--warmups` vào benchmark. Schema 2 lưu chỉ số lượt đo, quy tắc xoay thứ tự, cấu hình và nhật ký phiên. Resume làm nóng những biến thể còn lượt thiếu rồi chỉ đo phần thiếu. Schema 1 tiếp tục đọc được, với đầu ra phân tích ở thư mục bên cạnh.
+- Plotting tách IQR trong cùng nhiệm vụ khỏi Q1–Q3 giữa các nhiệm vụ. Tập so sánh dùng một trung vị thời gian mỗi nhiệm vụ và yêu cầu các biến thể có đủ lượt thành công, kết quả nhất quán. Các lượt thiếu, trạng thái hỗn hợp và kết quả xác định sai khác có ghi chú riêng.
+- `python -m bonus.warehouse.benchmark --profile quick --repeats 3 --warmups 1` ghi 456/456 lượt chính thức trên 40 nhiệm vụ. Chạy lại cùng lệnh giữ 456 và thêm 0 lượt. Kết quả nằm ở `results/quick/e3e485108211f8988adf/`.
+- `python -u -m bonus.warehouse.benchmark --profile full --repeats 5 --warmups 1` ghi 4.680/4.680 lượt chính thức trên 252 nhiệm vụ, trong `results/full/2784d6551c6e7550b5b6/`. Chạy plotting bằng CPython portable và `--run-dir` cho từng thư mục. Đã vẽ thử một bản sao dữ liệu cũ để xác minh tương thích.
+- `.venv/warehouse-cpython/python.exe -m unittest discover -s tests -p 'test_warehouse*.py' -v` đạt 54/54. `python tests/test_all.py` đạt 8/8. Không sửa bộ giải hay hai bộ kết quả schema 1.
+- Báo cáo phân biệt phép đo lặp với phép đo một lượt. Số đo trên một máy và các thanh phân tán mô tả mẫu quan sát được, chưa đánh giá khác biệt giữa các máy.
+
+## Sửa lỗi khởi tạo GUI
+
+- **Nguyên nhân.** Khi kiểm tra ID hàng hoặc nạp bản đồ trong `WarehouseApp`, lỗi đầu vào thoát ra điểm chạy GUI dưới dạng traceback.
+- **Cách sửa.** `gui.py` chuyển lỗi đọc hoặc parse bản đồ và ID không tồn tại thành lỗi đầu vào riêng, rồi báo qua `argparse` với mã 2. Thông báo ID liệt kê các lựa chọn trên bản đồ. Khối `finally` dọn Pygame, kể cả khi khởi tạo dở. Lỗi lập trình xảy ra ngoài phần xác thực đầu vào vẫn được truyền ra.
+- **Kiểm tra.** `.venv/warehouse-cpython/python.exe -m unittest discover -s tests -p test_warehouse_gui.py -v` đạt 9/9 với SDL dummy. `.venv/warehouse-cpython/python.exe -m unittest discover -s tests -p 'test_warehouse*.py'` đạt 49/49. `python tests/test_all.py` đạt 8/8.
+- **Xác minh CLI.** Chạy bằng CPython portable với SDL dummy và `PYTHONIOENCODING=cp1252`. `--pickup DOES_NOT_EXIST --frames 1` trả mã 2, báo tiếng Việt UTF-8 và liệt kê ID `A` trên bản đồ mặc định, không in traceback. `--pickup A --frames 1` trả mã 0.
+- Thuật toán và kết quả benchmark giữ nguyên.
+
 ## Lượt 9 · Nghiệm thu
 
 ### Đã hoàn thành

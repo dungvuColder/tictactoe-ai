@@ -15,6 +15,7 @@ from pathlib import Path
 from random import Random
 from tempfile import NamedTemporaryFile
 from time import get_clock_info, perf_counter
+from uuid import uuid4
 
 from .environment import MultiPickupProblem, SingleGoalProblem, load_map
 from .planning import nearest_neighbor
@@ -22,7 +23,10 @@ from .search import search
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT_DIR = ROOT / "results"
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
+DEFAULT_REPEATS = 5
+DEFAULT_WARMUPS = 1
+ORDER_RULE = "task_index_plus_round_rotate_left_v1"
 PICKUP_COUNTS = (1, 3, 5)
 VARIANTS = {
     "bfs": ("bfs", None),
@@ -111,9 +115,12 @@ def _environment() -> dict:
     return {
         "python_version": platform.python_version(),
         "python_implementation": platform.python_implementation(),
+        "python_build": list(platform.python_build()),
         "system": platform.system(),
         "system_release": platform.release(),
+        "system_version": platform.version(),
         "machine": platform.machine(),
+        "processor": platform.processor(),
         "logical_cpus": os.cpu_count(),
         "perf_counter_resolution": get_clock_info("perf_counter").resolution,
     }
@@ -150,6 +157,7 @@ def _inputs(profile: dict) -> tuple[dict, list]:
                     blocked = sum(cell == 0 for row in warehouse["grid"] for cell in row)
                     for count in PICKUP_COUNTS if mode == "multi" else (1,):
                         tasks.append({
+                            "task_index": len(tasks),
                             "task_id": f"{map_id}-p{count}",
                             "map_id": map_id, "seed": seed, "mode": mode, "cost_kind": cost,
                             "size": size, "density_percent": density, "blocked_cells": blocked,
@@ -159,12 +167,13 @@ def _inputs(profile: dict) -> tuple[dict, list]:
     return maps, tasks
 
 
-def _manifest(profile_name: str, maps: dict, tasks: list) -> dict:
+def _manifest(profile_name: str, maps: dict, tasks: list, repeats: int, warmups: int) -> dict:
     settings = {
         "schema_version": SCHEMA_VERSION,
         "profile": profile_name,
         "settings": PROFILES[profile_name],
         "variants": VARIANTS,
+        "measurement": {"repeats": repeats, "warmups": warmups, "order": ORDER_RULE},
         "environment": _environment(),
         "code_sha256": {
             name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
@@ -178,20 +187,35 @@ def _manifest(profile_name: str, maps: dict, tasks: list) -> dict:
 
 def load_run(directory: Path) -> tuple[dict, list]:
     manifest = read_json(directory / "manifest.json")
-    if manifest.get("schema_version") != SCHEMA_VERSION:
+    if manifest.get("schema_version") not in (1, SCHEMA_VERSION):
         raise ValueError(f"Phiên bản dữ liệu benchmark không được hỗ trợ: {directory}")
     config_id = manifest["config_id"]
     if config_id != _digest({key: value for key, value in manifest.items() if key != "config_id"}):
         raise ValueError(f"Manifest không khớp mã cấu hình: {directory}")
+    if manifest["schema_version"] == SCHEMA_VERSION:
+        measurement = manifest["measurement"]
+        _validate_measurement(measurement["repeats"], measurement["warmups"])
+        if measurement["order"] != ORDER_RULE:
+            raise ValueError(f"Quy tắc thứ tự đo không được hỗ trợ: {directory}")
     tasks = read_json(directory / "tasks.json")
     if _digest(tasks) != manifest["tasks_sha256"]:
         raise ValueError(f"Danh sách nhiệm vụ không khớp manifest: {directory}")
     return manifest, tasks
 
 
-def _identity(manifest: dict, task: dict, variant: str) -> dict:
+def repeat_count(manifest: dict) -> int:
+    return manifest["measurement"]["repeats"] if manifest["schema_version"] == SCHEMA_VERSION else 1
+
+
+def _order(task: dict, round_index: int) -> tuple:
+    variants = task["variants"]
+    offset = (task["task_index"] + round_index) % len(variants)
+    return (*variants[offset:], *variants[:offset])
+
+
+def _identity(manifest: dict, task: dict, variant: str, repeat_index: int) -> dict:
     algorithm, heuristic = manifest["variants"][variant]
-    return {
+    identity = {
         "config_id": manifest["config_id"],
         "task_id": task["task_id"],
         "map_id": task["map_id"],
@@ -204,22 +228,35 @@ def _identity(manifest: dict, task: dict, variant: str) -> dict:
         },
         "environment": manifest["environment"],
     }
+    if manifest["schema_version"] == SCHEMA_VERSION:
+        identity["repeat_index"] = repeat_index
+        identity["order_index"] = _order(task, repeat_index - 1).index(variant) + 1
+    return identity
 
 
-def _row_path(directory: Path, task: dict, variant: str) -> Path:
-    return directory / "raw" / f"{task['task_id']}__{variant}.json"
+def _row_path(directory: Path, manifest: dict, task: dict, variant: str, repeat_index: int) -> Path:
+    suffix = f"__r{repeat_index:04d}" if manifest["schema_version"] == SCHEMA_VERSION else ""
+    return directory / "raw" / f"{task['task_id']}__{variant}{suffix}.json"
 
 
-def read_attempt(directory: Path, manifest: dict, task: dict, variant: str) -> dict | None:
-    path = _row_path(directory, task, variant)
+def read_attempt(
+    directory: Path, manifest: dict, task: dict, variant: str, repeat_index: int = 1
+) -> dict | None:
+    path = _row_path(directory, manifest, task, variant, repeat_index)
     try:
         row = read_json(path)
     except FileNotFoundError:
         return None
-    if any(row.get(key) != value for key, value in _identity(manifest, task, variant).items()):
+    if any(row.get(key) != value for key, value in _identity(manifest, task, variant, repeat_index).items()):
         raise ValueError(f"Lần chạy không khớp cấu hình hoặc nhiệm vụ: {path}")
     if row.get("status") not in STATUSES:
         raise ValueError(f"Trạng thái không hợp lệ: {path}")
+    if manifest["schema_version"] == SCHEMA_VERSION and (
+        not isinstance(row.get("session_id"), str) or not row["session_id"]
+        or type(row.get("session_attempt_index")) is not int
+        or row["session_attempt_index"] < 1
+    ):
+        raise ValueError(f"Thiếu thông tin phiên đo hợp lệ: {path}")
     return row
 
 
@@ -265,15 +302,25 @@ def _measure(directory: Path, identity: dict, task: dict) -> dict:
     }
 
 
-def run(profile_name: str, output_dir: Path = OUTPUT_DIR) -> Path:
+def _validate_measurement(repeats: int, warmups: int) -> None:
+    if type(repeats) is not int or repeats < 1:
+        raise ValueError("--repeats phải là số nguyên từ 1 trở lên")
+    if type(warmups) is not int or warmups < 0:
+        raise ValueError("--warmups phải là số nguyên không âm")
+
+
+def run(
+    profile_name: str, output_dir: Path = OUTPUT_DIR, *,
+    repeats: int = DEFAULT_REPEATS, warmups: int = DEFAULT_WARMUPS,
+) -> Path:
+    _validate_measurement(repeats, warmups)
     maps, tasks = _inputs(PROFILES[profile_name])
-    manifest = _manifest(profile_name, maps, tasks)
+    manifest = _manifest(profile_name, maps, tasks, repeats, warmups)
     directory = output_dir / profile_name / manifest["config_id"][:20]
-    expected = sum(len(task["variants"]) for task in tasks)
-    completed = 0
+    expected = repeats * sum(len(task["variants"]) for task in tasks)
     print(f"Profile {profile_name} · {len(maps)} bản đồ · {len(tasks)} nhiệm vụ · {expected} lần chạy")
     print(f"Thư mục {directory}")
-    with _run_lock(directory):
+    with _run_lock(OUTPUT_DIR), _run_lock(directory):
         # Kiểm tra danh tính trước khi ghi bất kỳ bản đồ hay số liệu mới nào.
         if (directory / "manifest.json").exists():
             _save_input(directory / "manifest.json", manifest)
@@ -282,22 +329,65 @@ def run(profile_name: str, output_dir: Path = OUTPUT_DIR) -> Path:
             _save_input(directory / "maps" / f"{map_id}.json", data)
         _save_input(directory / "manifest.json", manifest)
         existing = {
-            (task["task_id"], variant)
+            (task["task_id"], variant, repeat_index)
             for task in tasks for variant in task["variants"]
-            if read_attempt(directory, manifest, task, variant) is not None
+            for repeat_index in range(1, repeats + 1)
+            if read_attempt(directory, manifest, task, variant, repeat_index) is not None
         }
-        for index, task in enumerate(tasks):
-            variants = task["variants"]
-            offset = index % len(variants)
-            for variant in (*variants[offset:], *variants[:offset]):
-                if (task["task_id"], variant) in existing:
+        session_id = uuid4().hex
+        session_path = directory / "sessions" / f"{session_id}.json"
+        session = {
+            "session_id": session_id,
+            "config_id": manifest["config_id"],
+            "started_utc": datetime.now(timezone.utc).isoformat(),
+            "existing_attempts": len(existing),
+            "expected_attempts": expected,
+            "status": "running",
+        }
+        write_json(session_path, session)
+        completed = warmed = 0
+        try:
+            for task in tasks:
+                task_id = task["task_id"]
+                pending = {
+                    variant for variant in task["variants"]
+                    if any((task_id, variant, index) not in existing for index in range(1, repeats + 1))
+                }
+                if not pending:
                     continue
-                identity = _identity(manifest, task, variant)
-                row = _measure(directory, identity, task)
-                write_json(_row_path(directory, task, variant), row)
-                completed += 1
-                if completed % 50 == 0:
-                    print(f"Đã ghi {completed} lần chạy mới", flush=True)
+                for round_index in range(-warmups, 0):
+                    for variant in _order(task, round_index):
+                        if variant in pending:
+                            _measure(directory, _identity(manifest, task, variant, 1), task)
+                            warmed += 1
+                for repeat_index in range(1, repeats + 1):
+                    for variant in _order(task, repeat_index - 1):
+                        if (task_id, variant, repeat_index) in existing:
+                            continue
+                        identity = {
+                            **_identity(manifest, task, variant, repeat_index),
+                            "session_id": session_id,
+                            "session_attempt_index": completed + 1,
+                        }
+                        row = _measure(directory, identity, task)
+                        write_json(_row_path(directory, manifest, task, variant, repeat_index), row)
+                        completed += 1
+                        if completed % 100 == 0:
+                            print(f"Đã ghi {completed} lần chạy mới", flush=True)
+        except KeyboardInterrupt:
+            session["status"] = "interrupted"
+            raise
+        else:
+            session["status"] = "complete"
+        finally:
+            if session["status"] == "running":
+                session["status"] = "failed"
+            session.update(
+                finished_utc=datetime.now(timezone.utc).isoformat(),
+                new_attempts=completed,
+                warmup_attempts=warmed,
+            )
+            write_json(session_path, session)
     print(f"Hoàn tất {completed} lần chạy mới, giữ {len(existing)} lần chạy đã lưu")
     return directory
 
@@ -306,9 +396,11 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Benchmark thuật toán lập kế hoạch robot kho.")
     parser.add_argument("--profile", choices=PROFILES, default="quick")
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR, help="Thư mục gốc cho các lần chạy")
+    parser.add_argument("--repeats", type=int, default=DEFAULT_REPEATS, help="Số lần đo chính thức (mặc định 5)")
+    parser.add_argument("--warmups", type=int, default=DEFAULT_WARMUPS, help="Số vòng làm nóng (mặc định 1)")
     args = parser.parse_args(argv)
     try:
-        run(args.profile, args.output_dir)
+        run(args.profile, args.output_dir, repeats=args.repeats, warmups=args.warmups)
     except KeyboardInterrupt:
         print("Đã dừng. Chạy lại cùng lệnh để tiếp tục các mẫu chưa lưu.", file=sys.stderr)
         return 130

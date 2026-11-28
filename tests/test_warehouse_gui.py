@@ -1,8 +1,10 @@
 import importlib.util
+import io
 import os
 import subprocess
 import sys
 import unittest
+from contextlib import redirect_stderr
 from threading import Event
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -36,14 +38,54 @@ class WarehouseGuiTests(unittest.TestCase):
         app.poll()
         return outcome
 
-    def test_help_uses_utf8_with_legacy_stdout(self):
-        completed = subprocess.run(
-            [sys.executable, "-m", "bonus.warehouse.gui", "--help"],
+    def run_gui(self, *args):
+        return subprocess.run(
+            [sys.executable, "-m", "bonus.warehouse.gui", *args],
             env={**os.environ, "PYTHONIOENCODING": "cp1252"},
             capture_output=True,
+            timeout=10,
         )
+
+    def test_help_uses_utf8_with_legacy_stdout(self):
+        completed = self.run_gui("--help")
         self.assertEqual(completed.returncode, 0)
         self.assertIn("Giao diện robot kho", completed.stdout.decode("utf-8"))
+
+    def test_unknown_pickup_lists_available_ids_in_utf8(self):
+        completed = self.run_gui(
+            "--map", "multi_pickup", "--pickup", "DOES_NOT_EXIST", "--frames", "1"
+        )
+        message = completed.stderr.decode("utf-8")
+        self.assertEqual(completed.returncode, 2)
+        self.assertIn("ID điểm lấy hàng 'DOES_NOT_EXIST' không tồn tại", message)
+        self.assertIn("Các ID có thể chọn: 'A', 'B', 'C'", message)
+        self.assertNotIn("Traceback", message)
+
+    def test_valid_pickup_starts_gui(self):
+        completed = self.run_gui("--map", "multi_pickup", "--pickup", "B", "--frames", "1")
+        self.assertEqual(completed.returncode, 0, completed.stderr.decode("utf-8"))
+
+    def test_map_startup_errors_report_cause_and_quit_pygame(self):
+        for error in (FileNotFoundError("Tệp bản đồ bị thiếu"), ValueError("JSON bản đồ sai")):
+            with self.subTest(error=error):
+                stderr = io.StringIO()
+                with patch.object(gui, "load_map", side_effect=error), redirect_stderr(stderr):
+                    with self.assertRaises(SystemExit) as raised:
+                        gui.main(["--frames", "1"])
+                message = stderr.getvalue()
+                self.assertEqual(raised.exception.code, 2)
+                self.assertIn("Không thể nạp bản đồ 'small_uniform'", message)
+                self.assertIn(str(error), message)
+                self.assertNotIn("Traceback", message)
+                self.assertFalse(gui.pg.display.get_init())
+                self.assertFalse(gui.pg.font.get_init())
+
+    def test_unexpected_startup_error_propagates_and_quits_pygame(self):
+        with patch.object(gui.pg.display, "set_mode", side_effect=ValueError("Lỗi lập trình")):
+            with self.assertRaisesRegex(ValueError, "Lỗi lập trình"):
+                gui.main(["--frames", "1"])
+        self.assertFalse(gui.pg.display.get_init())
+        self.assertFalse(gui.pg.font.get_init())
 
     def test_single_multi_and_no_path_render_and_play_back(self):
         cases = [
